@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Container } from "semantic-ui-react";
 import { List, Header} from "semantic-ui-react";
 
+import picture from "./images/picture.png"
+
 class Board extends React.Component {
 
     constructor(props) {
@@ -57,6 +59,7 @@ class Board extends React.Component {
         clearInterval(this.interval);
     }  
 
+    /*
     render() {
         return (
             <Container style={{ marginTop: 40 }}>
@@ -68,6 +71,14 @@ class Board extends React.Component {
             </Container>
         );
     }
+    */
+   render() {
+    return (
+        <div>
+            <img src={picture} />
+        </div>
+    );
+}
 }
 
 export default Board;
