@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import './App.css';
 
-import Board, { Scores } from './components/Board';
-import { Container } from "semantic-ui-react";
+//import Board, { Scores } from './components/Board';
+//import { Container } from "semantic-ui-react";
+
+import Arch from './components/Arch';
+import Board from './components/Board';
 
 import Sketch from './components/Sketch';
 
@@ -26,7 +29,8 @@ function App() {
   return (
     <Router>
      <Routes>
-        <Route exact path="/about" element={<Board />}/>
+        <Route exact path="/about" element={<Arch />}/>
+        <Route path="/scoreboard" element={<Board />}/>
         <Route path="/" element={<Sketch />}/>
       </Routes>
     </Router>

@@ -1,0 +1,35 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.Container {
+  font-family: sans-serif;
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  background-image: linear-gradient(241deg, #01faa8, #00a7ff);
+  animation: hue 60s infinite linear;
+}
+
+.Board {
+  font-family: "SF Pro Text";
+  text-align: center;
+  height: 500vh;
+  width: 100vw;
+  position: relative;
+
+  font-size: 300px;
+  margin: 20px;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+}
+
+@keyframes hue {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(-360deg);
+  }
+}

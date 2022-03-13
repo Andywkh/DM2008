@@ -10,8 +10,14 @@ class Sketch extends React.Component {
         this.myRef = React.createRef()
 
         this.state = {
+            
             directionValues: [],
-            globalVariable: 2
+            globalVariable: 2,
+
+            startValues: [],
+            startVariable: 0,
+
+            scoreValues: []
         }
     }
 
@@ -20,7 +26,9 @@ class Sketch extends React.Component {
         console.log(pointerToThis);
         let API_Call = "/directions";
         let directionFunction = [];
+        let startFunction = [];
        
+        console.log(this.state.startVariable);
         console.log(this.state.globalVariable);
 
         fetch(API_Call)
@@ -45,15 +53,20 @@ class Sketch extends React.Component {
                 
                 directionFunction.pop();
                 directionFunction.push(array[0].stickDirection);
+                startFunction.push(array[0].buttonPressed);
     
                 pointerToThis.setState({
-                    directionValues: directionFunction
+                    directionValues: directionFunction,
+                    startValues: startFunction
                 });
 
             }
           )
         
-        console.log("here");
+        console.log("Button Value");
+        console.log(this.state.startFunction);
+        console.log(this.state.startVariable);
+        console.log("Direction Value");
         console.log(this.state.directionFunction);
         console.log(this.state.directionValues[0]);
         if (this.state.directionValues[0] === 1) {
@@ -72,6 +85,25 @@ class Sketch extends React.Component {
             this.state.globalVariable = 4;
             console.log(4);
         }
+        if (this.state.startValues[0] === 1) {
+            this.state.startVariable = 1;
+        }
+    }
+
+    // Post Score to ScoreBoard
+
+    postScore(score) {
+        fetch('http://127.0.0.1:5000/add_score', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                "scorerName": "testName",
+                "scorerLength": score,
+            })
+        })
     }
 
     componentWillUnmount() {
@@ -175,17 +207,13 @@ class Sketch extends React.Component {
 
         /*
         p.mousePressed = () => {
-            s.total++;
-        }
-        */
-
-        p.mousePressed = () => {
             //s.total++;
 
             if (gameScreen==0) {
                 p.startGame();
             }
         }
+        */
 
         p.startGame = () => {
             gameScreen=1;
@@ -202,12 +230,18 @@ class Sketch extends React.Component {
             
             //console.log(this.state.globalVariable);
 
+            if (gameScreen === 0) {
+                if (this.state.startVariable === 1) {
+                    p.startGame();
+                }
+            }
+
             // gameScreen integration
-            if (gameScreen == 0) {
+            if (gameScreen === 0) {
                 p.initScreen();
-            } else if (gameScreen == 1) {
+            } else if (gameScreen === 1) {
                 p.gameScreen();
-            } else if (gameScreen == 2) {
+            } else if (gameScreen === 2) {
                 p.gameOverScreen();
             }
 
@@ -228,7 +262,7 @@ class Sketch extends React.Component {
             p.textAlign(p.CENTER);
             p.fill(52, 73, 94);
             p.textSize(70);
-            p.text("<3 i love EEE", W/2, H/2);
+            p.text("DM2008 Snake Game", W/2, H/2);
             p.textSize(15); 
             p.text("Click to start", W/2, H-30);
         }
@@ -256,11 +290,13 @@ class Sketch extends React.Component {
             p.fill(236, 240, 241);
             p.textSize(12);
             //p.text("Your Score", W/2, H/2 - 120);
-            p.text("You died just like my GPA, too bad", W/2, H/2 - 120);
+            p.text("Visit /scoreBoard to see best player", W/2, H/2 - 120);
+            this.state.startVariable = 0;
             p.textSize(120);
             //console.log(s.tail.length+1)
             p.text(s.score, W/2, H/2 + 120);
             console.log(s.score);
+            this.postScore(s.score);
             s.total = 0;
             s.tail = [];
             p.textSize(130);
@@ -295,7 +331,7 @@ class Sketch extends React.Component {
                 s.dir(-1, 0);
             }
         }
-    
+
     }
 
     /*

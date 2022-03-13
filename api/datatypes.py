@@ -10,3 +10,5 @@ class Score(db.Model):
 class Direction(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     stickDirection = db.Column(db.Integer)
+
+    buttonPressed = db.Column(db.Integer)
