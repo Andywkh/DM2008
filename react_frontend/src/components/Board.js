@@ -11,7 +11,6 @@ class Board extends React.Component {
         super(props);
         this.state = {
             highScoreNameValues: [],
-            //highScoreLengthValues: []
             highScoreLengthValues: 0,
         }
     }
@@ -42,15 +41,6 @@ class Board extends React.Component {
                 const object = Object.values(data);
                 const array = object[0];
                 console.log(array);
-    
-                /*
-                for (let i=0; i<array.length;i++) {
-                  
-                    highScoreNameFunction.push(array[i].scorerName);
-                    highScoreLengthFunction.push(array[i].scorerLength);
-                  
-                }   
-                */
 
                for (let i=0; i<array.length;i++) {
                   
@@ -59,15 +49,14 @@ class Board extends React.Component {
             
                 }   
 
-                //console.log("hereeee")
                 console.log(highScoreNameMax);
                 console.log(highScoreLengthMax);
 
                 var max = Math.max.apply(null, highScoreLengthMax);
-                //console.log("hereeee")
+
                 console.log(max);
                 var indexing = highScoreLengthMax.indexOf(max);
-                //console.log("hereeee")
+
                 console.log(indexing);
 
                 highScoreNameFunction.push(highScoreNameMax[indexing]);
@@ -88,49 +77,8 @@ class Board extends React.Component {
         clearInterval(this.interval);
     }  
 
-/*
     render() {
         return (
-            <Container style={{ marginTop: 20 }}>
-                <List>
-                    <List.Item>
-                    <Image avatar src='https://react.semantic-ui.com/images/avatar/small/rachel.png' />
-                    <List.Content>
-                        <List.Header as='a'>Rachel</List.Header>
-                        <List.Description>
-                        HighScore: {' '}
-                        <a>
-                            <b>Arrested Development</b>
-                        </a>{' '}
-                        </List.Description>
-                    </List.Content>
-                    </List.Item>
-                    <List.Item>
-                    <Image avatar src='https://react.semantic-ui.com/images/avatar/small/lindsay.png' />
-                    <List.Content>
-                        <List.Header as='a'>Lindsay</List.Header>
-                        <List.Description>
-                        HighScore: {' '}
-                        <a>
-                            <b>Bob's Burgers</b>
-                        </a>{' '}
-                        </List.Description>
-                    </List.Content>
-                    </List.Item>
-                </List>
-            </Container>
-        );
-    }
-*/
-
-    render() {
-        return (
-            /*
-            <Container style={{ marginTop: 40 }}>
-                <List items={this.state.highScoreNameValues} />
-                <List items={this.state.highScoreLengthValues} />
-            </Container>
-            */
             <Container className="Container" style={{ marginTop: 40 }}>
                 <List className="Board" horizontal relaxed>
                     <List.Item>

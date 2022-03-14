@@ -44,12 +44,6 @@ class Sketch extends React.Component {
                 const object = Object.values(data);
                 const array = object[0];
                 console.log(array);
-    
-                //for (let i=0; i<array.length;i++) {
-                //  
-                //    directionFunction.push(array[i].stickDirection);
-                //  
-                //}
                 
                 directionFunction.pop();
                 directionFunction.push(array[0].stickDirection);
@@ -205,16 +199,6 @@ class Sketch extends React.Component {
             food.mult(scl);
         }
 
-        /*
-        p.mousePressed = () => {
-            //s.total++;
-
-            if (gameScreen==0) {
-                p.startGame();
-            }
-        }
-        */
-
         p.startGame = () => {
             gameScreen=1;
         }
@@ -333,103 +317,6 @@ class Sketch extends React.Component {
         }
 
     }
-
-    /*
-
-    Sketch = (p) => {
-
-        const W = 680, H = 600; // dimensions of canvas
-        const time = 400; // number of x tick values
-        const step = W/time; // time step
-
-        const numbers = [20, 70, 12, 4];
-        const newArr = numbers.map(myFunction)
-
-        let segments;
-        let length;
-        let x;
-        let y;
-        let yRand;
-
-        p.setup = () => {
-            
-            p.createCanvas(W,H)
-
-            // Constrain our lines to 3/4 canvas size
-            length = W * 0.75;
-
-            // Define segments
-            segments = 4;
-
-            // Define starting points
-            x = length / segments;
-            //y = H * 0.5; ======================== edited here
-
-        }
-
-        p.draw = () => {
-            
-            p.background(200)
-
-            //p.background('#fff');
-            
-            //p.one = p.createVector(50,300);
-            //p.two = p.createVector(500,50);
-            //p.line(p.one.x,p.one.y,p.two.x,p.two.y);
-
-            for (let i = 0; i < segments; i++){
-    
-                // Get the next x point
-                let next = x + length / segments;
-                
-                // Get random y
-                //yRand = p.random(-(H * 0.25), H * 0.25); 
-                y = 0
-
-                // Draw the line from current
-                // point to next point
-                p.stroke('black');
-                p.strokeWeight(8);
-                //p.line(x, y, next, y += yRand); ==================== edited here
-                p.line(x, numbers[i], next, numbers[i+1]);
-
-                // To next point
-                p.line(x + length/ segments, y, next, y)
-                
-                // Draw the current point
-                p.push()
-                p.strokeWeight(25)
-                p.stroke("#ff9900")
-                
-                //draw the current point
-                //p.point(x, y - yRand) ============================ edited here
-                p.point(x, y - numbers[i])
-
-                // Draw the next point
-                p.point(x + length / segments, y) 
-                p.pop()
-                
-                // Update x position
-                x = next;
-                
-            }
-
-            // Draw the last point
-            p.strokeWeight(25)
-            p.stroke("#ff9900")
-            p.point(x, y)
-
-            // Draw the line once and stop
-            p.noLoop();
-        }
-
-        function myFunction(num) {
-            return num * 10;
-        }
-
-    }
-
-    */
 
     componentDidMount() {
 
