@@ -100,7 +100,7 @@ class Sketch extends React.Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                "scorerName": "testName",
+                "scorerName": "Player2",
                 "scorerLength": score,
             })
         })

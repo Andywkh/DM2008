@@ -1,6 +1,6 @@
 import React from "react";
 
-import picture from "./images/picture.png"
+import picture from "./images/DM2008_arch.png"
 
 class Arch extends React.Component {
 
