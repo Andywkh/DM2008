@@ -16,3 +16,10 @@ https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/tkv-crea
 
 Creating a Launch Template:
 https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-template.html
+
+Pushing new Build Folder into GitHub:
+git init
+git add .
+git commit -a -m "my first commit"
+git remote add origin <github http url>
+git push -u origin <branch name>
